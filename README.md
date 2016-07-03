@@ -1,11 +1,8 @@
 # ls-nginx
 
 ```
-sudo sh -c "echo iptables -t nat -I PREROUTING ! -d 10.0.0.0/23 ! -s 172.17.0.0/16 -i eno1 -p tcp --dport 80 -j REDIRECT --to-ports 3128 >> /etc/rc.local"
-```
-This is a temporary fix, it needs to be set each boot
-```
-sysctl -w net.ipv4.ip_forward=1
+sudo sh -c "echo iptables -t nat -I PREROUTING ! -s 172.17.0.0/16 ! -d 172.16.5.0/24 -i eno1 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128 >> /etc/rc.local"
+sudo sh -c "echo sysctl -w net.ipv4.ip_forward=1 >> /etc/rc.local"
 ```
 network config
 ```
@@ -21,4 +18,10 @@ auto eno1:0
 iface eno1:0 inet static
         address 172.16.5.2
         netmask 255.255.255.0
+
+auto eno1:1
+iface eno1:1 inet static
+        address 172.16.5.3
+        netmask 255.255.255.0
+
 ```
