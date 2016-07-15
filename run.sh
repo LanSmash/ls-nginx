@@ -15,4 +15,5 @@ docker run --name nginx -d --restart=always \
 	--volume $GITDIR/block.ls:/var/www/block.ls \
 	--volume $CACHEDIR:/data/ \
 	nginx:alpine &&
-docker logs -f nginx
+echo Run the following command to watch logs:
+echo "  docker logs -f nginx"
