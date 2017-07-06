@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #large folder for cache files
 CACHEDIR=/srv/cache
 
