@@ -17,7 +17,4 @@ docker run --name nginx -d --restart=always \
 	--volume $GITDIR/block.ls:/var/www/block.ls \
 	--volume $CACHEDIR:/data/ \
 	nginx:alpine &&
-docker logs -f nginx
-
-#       -p 80:80/tcp -p 3128:3128/tcp \
-
+	docker logs -f nginx
